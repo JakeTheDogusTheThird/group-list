@@ -1,0 +1,32 @@
+<div class="group-card" (mouseenter)="showMenu = true" (mouseleave)="showMenu = false">
+  <!-- Header -->
+  <div class="group-header">
+    <h3>
+      {{ group.name }}
+      <span *ngIf="group.warning" class="warning-icon" title="Warning">⚠️</span>
+    </h3>
+
+    <button *ngIf="showMenu" class="menu-btn">⋮</button>
+  </div>
+
+  <!-- Users list -->
+  <ul class="user-list">
+    <li *ngFor="let user of group.users">{{ user }}</li>
+  </ul>
+
+  <!-- Warning message -->
+  <div *ngIf="group.warning" class="warning-msg">
+    {{ group.warning }}
+  </div>
+
+  <!-- Services list -->
+  <div class="services">
+    <div class="service" *ngFor="let s of group.services">
+      <div class="service-title">{{ s.title }}</div>
+      <div class="service-values">
+        <span>Min: {{ s.min }}</span>
+        <span>Max: {{ s.max }}</span>
+      </div>
+    </div>
+  </div>
+</div>
