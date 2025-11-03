@@ -1,31 +1,43 @@
-<div class="group-card" (mouseenter)="showMenu = true" (mouseleave)="showMenu = false">
-  <!-- Header -->
-  <div class="group-header">
-    <h3>
-      {{ group.name }}
-      <span *ngIf="group.warning" class="warning-icon" title="Warning">⚠️</span>
-    </h3>
+<h1>Firm's Group</h1>
+<hr>
+<input placeholder="Filter...">
 
-    <button *ngIf="showMenu" class="menu-btn">⋮</button>
+<div class="group-card">
+  <div class="group-header" (mouseenter)="showMenu = true" (mouseleave)="showMenu = false">
+    <div class="group-title">
+      <span *ngIf="group.warning" class="warning-icon">⚠️</span>
+      {{ group.name }}
+    </div>
+
+    <div class="dropdown-menu">
+      <button *ngIf="showMenu" class="menu-button">…</button>
+      <div *ngIf="showMenu" class="dropdown-content">
+        <a class="menu-item" href="">✏️ Modify</a>
+        <a class="menu-item" href="">🗑️ Delete</a>
+      </div>
+    </div>
+
+    <div class="user-list">
+      <div *ngFor="let user of group.users | slice:0:4" class="user-avatar">
+        {{ user.initials }}
+      </div>
+      <div *ngIf="group.users.length > 4" class="user-avatar more">
+        +{{ group.users.length - 4 }}
+      </div>
+    </div>
+
   </div>
 
-  <!-- Users list -->
-  <ul class="user-list">
-    <li *ngFor="let user of group.users">{{ user }}</li>
-  </ul>
-
-  <!-- Warning message -->
   <div *ngIf="group.warning" class="warning-msg">
     {{ group.warning }}
   </div>
 
-  <!-- Services list -->
-  <div class="services">
-    <div class="service" *ngFor="let s of group.services">
-      <div class="service-title">{{ s.title }}</div>
-      <div class="service-values">
-        <span>Min: {{ s.min }}</span>
-        <span>Max: {{ s.max }}</span>
+  <!-- SERVICES LIST -->
+  <div class="service-list">
+    <div *ngFor="let s of group.services" class="service-item">
+      <div class="service-info">
+        <div class="title">{{ s.title }}</div>
+        <div class="values">{{ s.min | currency:'EUR' }} - {{ s.max | currency:'EUR' }}</div>
       </div>
     </div>
   </div>
