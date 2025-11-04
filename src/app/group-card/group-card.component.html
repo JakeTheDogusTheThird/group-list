@@ -1,43 +1,63 @@
-<h1>Firm's Group</h1>
-<hr>
-<input placeholder="Filter...">
-
 <div class="group-card">
-  <div class="group-header" (mouseenter)="showMenu = true" (mouseleave)="showMenu = false">
-    <div class="group-title">
+  <div
+    class="group-header"
+    (mouseenter)="showMenu = true"
+    (mouseleave)="showMenu = false"
+    (mouseleave)="isVisible = false"
+  >
+    <div class="group-title-container">
       <span *ngIf="group.warning" class="warning-icon">⚠️</span>
-      {{ group.name }}
-    </div>
+      <div class="group-title-section">
+        <div class="group-title-header">
+          <div class="group-title">{{ group.name }}</div>
+          <div class="dropdown-menu">
+            <div
+              *ngIf="showMenu"
+              class="menu-button"
+              (click)="toggleVisibility()"
+            >
+              <img
+                src="assets/ellipsis-default.svg"
+                class="menu-icon"
+                [src]="
+                  isVisible
+                    ? 'assets/ellipsis-hover.svg'
+                    : 'assets/ellipsis-default.svg'
+                "
+              />
+            </div>
 
-    <div class="dropdown-menu">
-      <button *ngIf="showMenu" class="menu-button">…</button>
-      <div *ngIf="showMenu" class="dropdown-content">
-        <a class="menu-item" href="">✏️ Modify</a>
-        <a class="menu-item" href="">🗑️ Delete</a>
+            <div *ngIf="isVisible && showMenu" class="dropdown-content">
+              <div class="other">Other</div>
+              <a class="menu-item" href=""><img src="assets/pencil.svg"> Modify</a>
+              <a class="menu-item" href=""><img src="assets/bin.svg"> Delete</a>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="group.warning" class="warning-message">
+          {{ group.warning }}
+        </div>
       </div>
     </div>
 
     <div class="user-list">
-      <div *ngFor="let user of group.users | slice:0:4" class="user-avatar">
-        {{ user.initials }}
+      <div *ngFor="let user of group.users | slice : 0 : 4" class="user-avatar">
+        <div class="initials">{{ user.initials }}</div>
       </div>
       <div *ngIf="group.users.length > 4" class="user-avatar more">
         +{{ group.users.length - 4 }}
       </div>
     </div>
-
   </div>
 
-  <div *ngIf="group.warning" class="warning-msg">
-    {{ group.warning }}
-  </div>
-
-  <!-- SERVICES LIST -->
   <div class="service-list">
     <div *ngFor="let s of group.services" class="service-item">
+      <img src="assets/wallet.svg" class="service-icon">
       <div class="service-info">
         <div class="title">{{ s.title }}</div>
-        <div class="values">{{ s.min | currency:'EUR' }} - {{ s.max | currency:'EUR' }}</div>
+        <div class="values">
+          {{ s.min | currency : "EUR" }} - {{ s.max | currency : "EUR" }}
+        </div>
       </div>
     </div>
   </div>

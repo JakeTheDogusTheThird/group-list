@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Group } from '../models/group.model'
+import { Group } from '../models/group.model';
 import { NgIf, NgFor, SlicePipe, CurrencyPipe } from '@angular/common';
 
 @Component({
@@ -7,36 +7,62 @@ import { NgIf, NgFor, SlicePipe, CurrencyPipe } from '@angular/common';
   standalone: true,
   imports: [NgIf, NgFor, SlicePipe, CurrencyPipe],
   templateUrl: './group-card.component.html',
-  styleUrl: './group-card.component.css'
+  styleUrl: './group-card.component.css',
 })
 export class GroupCardComponent {
   showMenu: boolean = false;
+  isVisible: boolean = false;
+
   group: Group = {
     services: [
       {
-        title: "MAV",
-        code: "MAV-SLIP",
-        min: "1",
-        max: "500"
+        title: 'MAV',
+        code: 'MAV-SLIP',
+        min: '1',
+        max: '500',
       },
       {
-        title: "RAV",
-        code: "RAV-SLIP",
-        min: "1",
-        max: "500"
-      }
+        title: 'RAV',
+        code: 'RAV-SLIP',
+        min: '1',
+        max: '500',
+      },
     ],
-    name: "Group 1",
+    name: 'Group 1',
     id: 22,
-    min: "1",
-    max: "500",
+    min: '1',
+    max: '500',
     users: [
       {
-        id: "09452W4295001",
-        initials: "EB",
-        fullName: "Elisa Blu"
-      }
+        id: '09452W4295001',
+        initials: 'EB',
+        fullName: 'Elisa Blu',
+      },
+      {
+        id: '09452W4295002',
+        initials: 'MS',
+        fullName: 'Martin Scorsese',
+      },
+      {
+        id: '09452W4295003',
+        initials: 'RM',
+        fullName: 'Robert Martin',
+      },
+      {
+        id: '09452W4295003',
+        initials: 'RM',
+        fullName: 'Robert Martin',
+      },
+      {
+        id: '09452W4295003',
+        initials: 'RM',
+        fullName: 'Robert Martin',
+      },
     ],
-    warning: ""
+    warning: 'Some warning message',
   };
+
+  toggleVisibility(): void {
+    this.isVisible = !this.isVisible;
+  }
 }

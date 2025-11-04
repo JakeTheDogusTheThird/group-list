@@ -1,0 +1,46 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="48"
+  height="48"
+  viewBox="0 0 48 48"
+  fill="none"
+>
+  <!-- Outer circle (radius 24px, centered) -->
+  <circle
+    cx="24"
+    cy="24"
+    r="23"
+    stroke="#0969B6"
+    stroke-width="2"
+    fill="none"
+  />
+
+  <!-- Wallet body -->
+  <rect
+    x="13"
+    y="17"
+    width="22"
+    height="14"
+    rx="2"
+    ry="2"
+    stroke="#0969B6"
+    stroke-width="2"
+    fill="none"
+  />
+
+  <!-- Wallet flap (top line) -->
+  <path
+    d="M13 20H35"
+    stroke="#0969B6"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <!-- Wallet button / clasp -->
+  <circle
+    cx="31.5"
+    cy="24"
+    r="1.5"
+    fill="#333"
+  />
+</svg>
