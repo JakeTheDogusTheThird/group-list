@@ -1,10 +1,10 @@
-<div class="group-card">
-  <div
-    class="group-header"
-    (mouseenter)="showMenu = true"
-    (mouseleave)="showMenu = false"
-    (mouseleave)="isVisible = false"
-  >
+<div
+  class="group-card"
+  (mouseenter)="showMenu = true"
+  (mouseleave)="showMenu = false"
+  (mouseleave)="isVisible = false"
+>
+  <div class="group-header">
     <div class="group-title-container">
       <span *ngIf="group.warning" class="warning-icon">⚠️</span>
       <div class="group-title-section">
@@ -16,21 +16,21 @@
               class="menu-button"
               (click)="toggleVisibility()"
             >
-              <img
-                src="assets/ellipsis-default.svg"
-                class="menu-icon"
-                [src]="
-                  isVisible
-                    ? 'assets/ellipsis-hover.svg'
-                    : 'assets/ellipsis-default.svg'
-                "
-              />
+              <img src="assets/ellipsis.svg" class="menu-icon" />
             </div>
 
             <div *ngIf="isVisible && showMenu" class="dropdown-content">
               <div class="other">Other</div>
-              <a class="menu-item" href=""><img src="assets/pencil.svg"> Modify</a>
-              <a class="menu-item" href=""><img src="assets/bin.svg"> Delete</a>
+
+              <div class="dropdown-menu-item">
+                <img src="assets/pencil.svg" />
+                <a href="">Modify</a>
+              </div>
+
+              <div class="dropdown-menu-item">
+                <img src="assets/bin.svg" />
+                <a href="">Delete</a>
+              </div>
             </div>
           </div>
         </div>
@@ -41,18 +41,18 @@
     </div>
 
     <div class="user-list">
-      <div *ngFor="let user of group.users | slice : 0 : 4" class="user-avatar">
-        <div class="initials">{{ user.initials }}</div>
+      <div *ngFor="let user of group.users | slice : 0 : 3" class="user-avatar">
+        {{ user.initials }}
       </div>
-      <div *ngIf="group.users.length > 4" class="user-avatar more">
-        +{{ group.users.length - 4 }}
+      <div *ngIf="group.users.length > 3" class="user-avatar more">
+        +{{ group.users.length - 3 }}
       </div>
     </div>
   </div>
 
   <div class="service-list">
-    <div *ngFor="let s of group.services" class="service-item">
-      <img src="assets/wallet.svg" class="service-icon">
+    <div *ngFor="let s of group.services | slice : 0 : 4" class="service-item">
+      <img src="assets/wallet.svg" class="service-icon" />
       <div class="service-info">
         <div class="title">{{ s.title }}</div>
         <div class="values">
@@ -60,5 +60,23 @@
         </div>
       </div>
     </div>
+    <div
+      *ngIf="group.services.length == 5; else serviceOverflow"
+      class="service-item"
+    >
+      <img src="assets/wallet.svg" class="service-icon" />
+      <div class="service-info">
+        <div class="title">{{ group.services[4].title }}</div>
+        <div class="values">
+          {{ group.services[4].min | currency : "EUR" }} -
+          {{ group.services[4].max | currency : "EUR" }}
+        </div>
+      </div>
+    </div>
+
+    <ng-template #serviceOverflow>
+      <img src="assets/wallet.svg" class="service-icon" />
+      <div class="service-info">+{{ group.services.length - 4 }} Services</div>
+    </ng-template>
   </div>
 </div>

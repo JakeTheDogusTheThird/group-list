@@ -1,7 +1,7 @@
 .group-card {
   background-color: white;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   margin: auto;
 }
 
@@ -49,24 +49,38 @@
 }
 
 .dropdown-content {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
   position: absolute;
   background-color: #f9f9f9;
   border-radius: 10px;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 12px 16px;
-}
-
-.dropdown-content a {
-  display: block;
-  text-decoration: none;
-  color: black;
+  /* padding: 12px 16px; */
 }
 
 .dropdown-content .other {
   border-bottom: solid 1px #ddd;
-  margin-bottom: 10px;
-  padding-bottom: 5px;
+  padding: 10px;
+}
+
+.dropdown-menu-item {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px;
+}
+
+.dropdown-menu-item:hover {
+  background-color: #EEE;
+}
+
+.dropdown-menu-item a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
 }
 
 .warning-message {
@@ -80,15 +94,16 @@
 }
 
 .user-avatar {
-  background-color: #0969b6;
-  color: white;
+  background-color: #F5F5F5;
+  color: #AEAEAE;
   width: 30px;
   height: 30px;
-}
-
-.initials {
-  vertical-align: middle;
-  text-align: center;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;
+  font-size: 12px;
+  font-weight: 550;
 }
 
 .service-list {
@@ -108,4 +123,10 @@
 
 .service-info > .values {
   color: #777;
+}
+
+.service-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
