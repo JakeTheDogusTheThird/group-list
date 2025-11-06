@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { Group } from '../models/group.model';
 import { NgIf, NgFor, SlicePipe, CurrencyPipe } from '@angular/common';
+import { GroupHeaderComponent } from "./group-header/group-header.component";
 
 @Component({
   selector: 'app-group-card',
   standalone: true,
-  imports: [NgIf, NgFor, SlicePipe, CurrencyPipe],
+  imports: [NgIf, NgFor, SlicePipe, CurrencyPipe, GroupHeaderComponent],
   templateUrl: './group-card.component.html',
   styleUrl: './group-card.component.css',
 })
 export class GroupCardComponent {
-  showMenu: boolean = false;
-  isVisible: boolean = false;
+  showMenuButton: boolean = false;
 
   group: Group = {
     services: [
@@ -97,8 +97,4 @@ export class GroupCardComponent {
     ],
     warning: 'Some warning message',
   };
-
-  toggleVisibility(): void {
-    this.isVisible = !this.isVisible;
-  }
 }

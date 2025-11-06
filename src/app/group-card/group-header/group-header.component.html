@@ -1,0 +1,18 @@
+<div class="group-header">
+  <div class="group-title-container">
+    <span *ngIf="group.warning" class="warning-icon">⚠️</span>
+    <div class="group-title-section">
+      <div class="group-title-header">
+        <div class="group-title">{{ group.name }}</div>
+        <app-group-dropdown-menu
+          [isButtonVisible]="showMenuButton"
+        ></app-group-dropdown-menu>
+      </div>
+      <div *ngIf="group.warning" class="warning-message">
+        {{ group.warning }}
+      </div>
+    </div>
+  </div>
+
+  <app-group-user-list [users]="group.users"></app-group-user-list>
+</div>

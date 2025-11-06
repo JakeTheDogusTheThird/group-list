@@ -1,0 +1,8 @@
+<div class="user-list">
+  <div *ngFor="let user of users| slice : 0 : 3" class="user-avatar">
+    {{ user.initials }}
+  </div>
+  <div *ngIf="users.length > 3" class="user-avatar more">
+    +{{ users.length - 3 }}
+  </div>
+</div>
